@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://fiddle.jshell.net/christopherneff/d7u4ry7z/3/show/light/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="./dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="./result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    </style> <script src="./angular.min.js"></script> <style> * {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+body {
+  font: 300 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs {
+  margin: 25px;
+  background: #fff;
+}
+
+.tabs__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+}
+
+.tabs__list li {
+  float: left;
+}
+
+.tabs__list li a {
+  color: #444;
+  display: block;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+.tabs__content {
+  padding: 10px;
+}
+
+  </style>
+
+  <title> by christopherneff</title>
+
+  
+</head>
+
+<body>
+  <div ng-app="app" class="ng-scope">
+  <div>
+    <tabs active="0" class="ng-isolate-scope">
+      	<div class="tabs">
+        	<ul class="tabs__list">
+          	<!-- ngRepeat: tab in tabs.tabs --><li ng-repeat="tab in tabs.tabs" class="ng-scope">
+            	<a href="https://fiddle.jshell.net/christopherneff/d7u4ry7z/3/show/light/" ng-bind="tab.label" ng-click="tabs.selectTab($index);" class="ng-binding">Tab 1</a>
+            </li><!-- end ngRepeat: tab in tabs.tabs --><li ng-repeat="tab in tabs.tabs" class="ng-scope">
+            	<a href="https://fiddle.jshell.net/christopherneff/d7u4ry7z/3/show/light/" ng-bind="tab.label" ng-click="tabs.selectTab($index);" class="ng-binding">Tab 2</a>
+            </li><!-- end ngRepeat: tab in tabs.tabs --><li ng-repeat="tab in tabs.tabs" class="ng-scope">
+            	<a href="https://fiddle.jshell.net/christopherneff/d7u4ry7z/3/show/light/" ng-bind="tab.label" ng-click="tabs.selectTab($index);" class="ng-binding">Tab 3</a>
+            </li><!-- end ngRepeat: tab in tabs.tabs -->
+          </ul>
+        	<div class="tabs__content" ng-transclude="">
+      <tab label="Tab 1" class="ng-scope ng-isolate-scope">
+    	<!-- ngIf: tab.selected --><div class="tabs__content ng-scope" ng-if="tab.selected">
+      	<div ng-transclude=""><span class="ng-scope">
+        Tab 1 contents!
+      </span></div>
+        <button ng-click="clickBtn();">Search Button???</button>
+      </div><!-- end ngIf: tab.selected --></tab>
+      <tab label="Tab 2" class="ng-scope ng-isolate-scope">
+    	<!-- ngIf: tab.selected --></tab>
+      <tab label="Tab 3" class="ng-scope ng-isolate-scope">
+    	<!-- ngIf: tab.selected --></tab>
+    </div>
+        </div>
+      </tabs>
+  </div>
+</div>
+
+  
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+
+function tab() {
+  return {
+    restrict: 'E',
+    scope: {
+      label: '@'
+    },
+    require: '^tabs',
+    transclude: true,
+    controller: function() {
+
+    },
+    controllerAs: 'tab',
+    template: `
+    	<div class="tabs__content" ng-if="tab.selected">
+      	<div ng-transclude></div>
+        <button ng-click="clickBtn();">Search Button???</button>
+      </div>`,
+    link: function($scope, $element, $attrs, $ctrl) {
+      $scope.tab = {
+        label: $scope.label,
+        selected: false
+      };
+
+      $scope.clickBtn = function() {
+        // NOTE Watch out for these shared kinds of variables
+        $ctrl.innerClickCount++;
+        console.log($ctrl.innerClickCount);
+      };
+
+
+      $ctrl.addTab($scope.tab);
+
+    }
+  }
+}
+
+function tabs() {
+  return {
+    restrict: 'E',
+    scope: {},
+    transclude: true,
+    controller: function() {
+      this.tabs = [];
+      this.innerClickCount = 0;
+      this.addTab = function addTab(tab) {
+        this.tabs.push(tab);
+      };
+      this.selectTab = function selectTab(index) {
+        for (var i = 0; i < this.tabs.length; i++) {
+          this.tabs[i].selected = false;
+        }
+        this.tabs[index].selected = true;
+      };
+    },
+    controllerAs: 'tabs',
+    link: function($scope, $element, $attrs, $ctrl) {
+      $ctrl.selectTab($attrs.active || 0);
+    },
+    template: `
+      	<div class="tabs">
+        	<ul class="tabs__list">
+          	<li ng-repeat="tab in tabs.tabs">
+            	<a href="" ng-bind="tab.label" ng-click="tabs.selectTab($index);"></a>
+            </li>
+          </ul>
+        	<div class="tabs__content" ng-transclude></div>
+        </div>
+      `
+  };
+}
+
+angular
+  .module('app', [])
+  .directive('tab', tab)
+  .directive('tabs', tabs);
+
+//]]> 
+
+</script>
+
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "d7u4ry7z"
+    }], "*")
+  }
+</script>
+
+
+
+
+
+</body></html>
