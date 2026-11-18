@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 import Socials from "./Socials.astro";
 import { useTranslations } from "@/i18n";
+import config from "@/config";
 
 type Props = {
   noMarginTop?: boolean;
@@ -11,6 +12,18 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
 
 const t = useTranslations(Astro.currentLocale);
 const currentYear = new Date().getFullYear();
+
+// Build time, so a stale cached page is easy to spot after a deploy.
+const builtAt = new Date(__BUILD_TIME__);
+const builtAtLabel = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+  timeZone: config.site.timezone,
+  timeZoneName: "short",
+}).format(builtAt);
 ---
 
 <footer
@@ -27,4 +40,7 @@ const currentYear = new Date().getFullYear();
       <span>{t.footer.allRightsReserved}</span>
     </div>
   </div>
+  <p class="text-muted-foreground pb-4 text-center text-xs sm:text-start">
+    Last built <time datetime={builtAt.toISOString()}>{builtAtLabel}</time>
+  </p>
 </footer>
