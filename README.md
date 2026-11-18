@@ -19,7 +19,7 @@ draft: true # optional, keeps the post off the site
 ---
 ```
 
-Push to `main` and the site rebuilds in a minute or two.
+Commit it on a branch and open a pull request. The `check` job builds the site, and merging to `main` deploys it in a minute or two. Direct pushes to `main` are blocked.
 
 ## Run locally
 
