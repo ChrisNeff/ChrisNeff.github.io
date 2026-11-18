@@ -65,6 +65,10 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    // One timestamp for the whole build, shown in the footer.
+    define: {
+      __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+    },
   },
   fonts: [
     {
