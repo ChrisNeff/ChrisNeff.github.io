@@ -4,7 +4,7 @@ export default defineAstroPaperConfig({
   site: {
     url: "https://chrisneff.github.io/",
     title: "Steel & Silicon",
-    description: "A Pittsburgh engineer on cloud, AI, and building things that last.",
+    description: "A Pittsburgh technologist on cloud, AI, and building things that last.",
     author: "Chris Neff",
     profile: "https://github.com/ChrisNeff",
     lang: "en",
