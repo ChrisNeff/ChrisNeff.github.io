@@ -1,6 +1,6 @@
 # ChrisNeff.github.io
 
-Chris Neff's personal blog: Astro on a vendored copy of the AstroPaper theme, deployed to https://chrisneff.github.io/ by GitHub Actions. README.md covers writing a post, frontmatter, and local commands.
+Steel & Silicon, Chris Neff's personal blog: Astro on a vendored copy of the AstroPaper theme, deployed to https://chrisneff.github.io/ by GitHub Actions. README.md covers writing a post, frontmatter, and local commands.
 
 ## Changes go through a pull request
 

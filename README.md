@@ -1,6 +1,6 @@
 # ChrisNeff.github.io
 
-Personal blog at https://chrisneff.github.io/, built with [Astro](https://astro.build) on the [AstroPaper](https://github.com/satnaing/astro-paper) theme (v7.2.0, MIT, see `LICENSE`) in Pittsburgh black and gold. GitHub Actions builds and deploys it on every push to `main`.
+Steel & Silicon, Chris Neff's personal blog at https://chrisneff.github.io/, built with [Astro](https://astro.build) on the [AstroPaper](https://github.com/satnaing/astro-paper) theme (v7.2.0, MIT, see `LICENSE`) in Pittsburgh black and gold. GitHub Actions deploys it on every merge to `main`.
 
 ## Write a post
 

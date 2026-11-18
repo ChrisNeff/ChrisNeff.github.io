@@ -3,8 +3,8 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://chrisneff.github.io/",
-    title: "Chris Neff",
-    description: "Notes on what I'm working on and learning.",
+    title: "Steel & Silicon",
+    description: "A Pittsburgh engineer on cloud, AI, and building things that last.",
     author: "Chris Neff",
     profile: "https://github.com/ChrisNeff",
     lang: "en",
